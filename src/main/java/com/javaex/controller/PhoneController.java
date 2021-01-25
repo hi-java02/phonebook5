@@ -1,10 +1,12 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -107,7 +109,54 @@ public class PhoneController {
 		return "modifyForm";
 	}
 	
+	//수정폼2 --> modifyForm
+	@RequestMapping(value = "/modifyForm2", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modifyForm2(@RequestParam("id") int id, Model model) {
+		System.out.println("modifyForm2");
+		System.out.println(id);
+		
+		Map<String, Object> personMap = phoneDao.getPerson2(id);
+		model.addAttribute("personVo", personMap);
+		
+		
+		return "modifyForm2";
+	}
+	
+	
+	
+	
+	
+	
+	//수정 -->modify
+	@RequestMapping(value = "/modify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modify(@ModelAttribute PersonVo personVo) {
+		System.out.println("modify");
+		System.out.println(personVo.toString());
+		
+		int count = phoneDao.personUpdate(personVo);
+		
+		return "redirect:/phone/list";
+	}
+	
+	
+	//수정2 -->modify2
+	@RequestMapping(value = "/modify2", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modify2(@RequestParam("personId") int personId,
+						  @RequestParam("name") String name,
+						  @RequestParam("hp") String hp,
+						  @RequestParam("company") String company  ) {
+		
+		System.out.println("modify2");
+		System.out.println(personId +","+ name + "," + hp + ","+ company);
+		
+		int count = phoneDao.personUpdate2(personId, name, hp, company);
+		
+		return "redirect:/phone/list";
+	}
+	
 	/*
+	
+	
 	
 	
 	

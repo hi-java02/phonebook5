@@ -70,6 +70,40 @@
 		]]>
 	</select>
 	
+	<!-- 전화번호 1개 가져오기2 -->
+	<select id="selectOne2" parameterType="int" resultType="map">
+			select  person_id personId,
+       				name,
+        			hp,
+        			company
+			from person
+			where person_id = #{personId}
+	</select>
+	
+	
+	<!-- 수정 -->
+	<update id="update" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			update  person
+					set name = #{name},
+    				hp = #{hp},
+    				company = #{company}
+			where person_id = #{personId}
+		]]>
+	</update>
+
+
+	<!-- 수정2 -->
+	<update id="update2" parameterType="map">
+		<![CDATA[
+			update  person
+					set name = #{name},
+    				hp = #{hp},
+    				company = #{company}
+			where person_id = #{id}
+		]]>
+	</update>
+
 
 
 </mapper>
