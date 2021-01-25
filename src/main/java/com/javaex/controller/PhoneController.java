@@ -116,8 +116,7 @@ public class PhoneController {
 		System.out.println(id);
 		
 		Map<String, Object> personMap = phoneDao.getPerson2(id);
-		model.addAttribute("personVo", personMap);
-		
+		model.addAttribute("pMap", personMap);
 		
 		return "modifyForm2";
 	}

@@ -59,7 +59,7 @@
 	</delete>
 	
 	<!-- 전화번호 1개 가져오기 -->
-	<select id="selectOne" parameterType="int" resultType="com.javaex.vo.PersonVo">
+	<select id="selectOne" parameterType="int" resultType="PersonVo">
 		<![CDATA[
 			select  person_id personId,
        				name,
@@ -72,10 +72,10 @@
 	
 	<!-- 전화번호 1개 가져오기2 -->
 	<select id="selectOne2" parameterType="int" resultType="map">
-			select  person_id personId,
-       				name,
-        			hp,
-        			company
+			select  person_id "personId",
+       	            name "name",
+                    hp "hp",
+                    company "company"
 			from person
 			where person_id = #{personId}
 	</select>

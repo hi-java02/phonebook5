@@ -59,13 +59,15 @@ public class PhoneDao {
 		
 		Map<String, Object> personMap = sqlSession.selectOne("phonebook.selectOne2", personId);
 		System.out.println(personMap.toString());
-		
+	
 		/*
-		 * int id = (Integer)personMap.get("PERSONID"); System.out.println(id);
-		 * 
-		 * String name = (String)personMap.get("NAME"); System.out.println(name);
-		 */
+		String name = (String)personMap.get("name");
+		System.out.println(name);
 		
+		int id = Integer.parseInt(String.valueOf(personMap.get("personId")));
+		System.out.println(id);
+		*/	
+				
 		return personMap;
 	}
 	
